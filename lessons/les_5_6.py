@@ -1,5 +1,16 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
+"""
+Detect light intensity
+
+Position of switches:
++---+--------+--------+
+|on |        |        |
+|off|        |        |
++---+-----------------+
+"""
+
 # Author: Matt Hawkins
 # Author's Git: https://bitbucket.org/MattHawkinsUK/
 # Author's website: https://www.raspberrypi-spy.co.uk
@@ -62,7 +73,7 @@ def main():
     sensor = LightSensor()
     try:
         while True:
-            print "Light Level : " + str(sensor.readLight()) + " lx"
+            print ("Light Level : {} lx ".format(sensor.readLight()))
             time.sleep(0.5)
     except KeyboardInterrupt:
         pass

@@ -1,5 +1,16 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
+"""
+Buzzing when up is pushed
+
+Position of switches:
++---+--------+--------+
+|on |      7 |        |
+|off|123456 8|12345678|
++---+-----------------+
+"""
+
 import RPi.GPIO as GPIO
 import time
 

@@ -1,5 +1,15 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
+"""
+Detect tempratue and humidity
+
+Position of switches:
++---+--------+--------+
+|on |        |        |
+|off|        |        |
++---+-----------------+
+"""
 
 import RPi.GPIO as GPIO
 import time
@@ -17,9 +27,9 @@ GPIO.setup(motion_pin, GPIO.IN)
 try:
     while True:
         if(GPIO.input(motion_pin) == 0):
-            print "Nothing moves ..."
+            print ("Nothing moves ...")
         elif(GPIO.input(motion_pin) == 1):
-            print "Motion detected!"
+            print ("Motion detected!")
         time.sleep(0.1)
 except KeyboardInterrupt:
     GPIO.cleanup()

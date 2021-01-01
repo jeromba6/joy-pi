@@ -1,5 +1,19 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
+"""
+Start buzzing when up is pushed
+Stop buzzing when down is pushed
+Faster buzzing when left is pushed
+Slower buzzing when richt is pushed
+Alternate buzzing with vibrating
+
+Position of switches:
++---+--------+--------+
+|on |    5678|1       |
+|off|        |        |
++---+-----------------+
+"""
 import RPi.GPIO as GPIO
 import time
 
@@ -7,9 +21,9 @@ import time
 buzzer_pin = 12
 vib_pin = 13
 button = {
-    'up': 37,
-    'down': 33,
-    'left': 22,
+    'up':    37,
+    'down':  33,
+    'left':  22,
     'right': 35
 }
 
@@ -41,14 +55,15 @@ try:
         for key in button_released.keys():
             if not button_released[key] and GPIO.input(button[key]):
                 button_released[key] = True
-                print ('Button: {} - Value: {} - Time: {}'.format(key,GPIO.input(button[key]),time.time()))
+                print('Button: {} - Value: {} - Time: {}'.format(key,
+                                                                 GPIO.input(button[key]), time.time()))
 
         # check if button up is pressed
         if GPIO.input(button['up']) == 0 and button_released['up']:
             button_released['up'] = False
             if not buzzer_state:
-                 buzzer_time = time.time()
-                 buzz = True
+                buzzer_time = time.time()
+                buzz = True
             buzzer_state = True
 
         # check if button down is pressed
@@ -81,7 +96,6 @@ try:
             GPIO.output(buzzer_pin, GPIO.HIGH)
             GPIO.output(vib_pin, GPIO.LOW)
         else:
-        # it's not pressed, set button off
             GPIO.output(buzzer_pin, GPIO.LOW)
             if buzzer_state:
                 GPIO.output(vib_pin, GPIO.HIGH)

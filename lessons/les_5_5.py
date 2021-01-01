@@ -1,7 +1,18 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import RPi.GPIO as GPIO
 import time
+
+"""
+Detect sound
+
+Position of switches:
++---+--------+--------+
+|on |        |        |
+|off|        |        |
++---+-----------------+
+"""
+
 # define sound pin
 sound_pin = 18
 # set GPIO mode to GPIO.BOARD
