@@ -31,10 +31,8 @@ button = {
 GPIO.setmode(GPIO.BOARD)
 
 # setup button pin as input and buzzer pin as output
-GPIO.setup(button['up'],    GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(button['down'],  GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(button['left'],  GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(button['right'], GPIO.IN, pull_up_down=GPIO.PUD_UP)
+for button_name in button.keys():
+    GPIO.setup(button[button_name], GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(buzzer_pin, GPIO.OUT)
 GPIO.setup(vib_pin, GPIO.OUT)
 
