@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Detect distance with ultrasonic sensor
+Control stepper motor
 
 Position of switches:
 +---+--------+--------+
