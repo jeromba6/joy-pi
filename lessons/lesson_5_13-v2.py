@@ -6,7 +6,7 @@ Control servo motor
 
 Position of switches:
 +---+--------+--------+
-|on |        |      78|
+|on |    5 7 |      78|
 |off|        |        |
 +---+-----------------+
 """

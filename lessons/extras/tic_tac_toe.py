@@ -2,7 +2,22 @@
 # -*- coding: utf-8 -*-
 
 """
-Color rendering demo.
+Tic_tac_toe
+Played on joy-pi on 8x8 led matrix
+Buttons left / right to change cursor position
+Button up to confirm selection to play
+
+Board may flicker but that is to reduce intensity of the leds so it can be
+distiguised from the player sellected positions.
+
+Player 1 has the dots upper left and lower right
+Player 2 has the dots upper right and lower left
+
+Position of switches:
++---+--------+--------+
+|on |     678|1       |
+|off|        |        |
++---+-----------------+
 """
 
 import time
@@ -177,7 +192,7 @@ class Tic_Tac_Toe:
                         self.cursor = 0
                 x = cursor_position % 3
                 y = int(cursor_position/3)
-                draw.point((x*3+int(self.cursor/2),y*3+(self.cursor%2)), fill=1)
+                draw.point((x*3+int(self.cursor/2),y*3+abs((self.cursor%2-int(self.cursor/2)))), fill=1)
 
 
 if __name__ == "__main__":
