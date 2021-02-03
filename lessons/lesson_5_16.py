@@ -2,35 +2,38 @@
 # -*- coding: utf-8 -*-
 
 """
-Control 7 segement display
+Detect touch
 
 Position of switches:
 +---+--------+--------+
-|on |        | 2      |
+|on |        |        |
 |off|        |        |
 +---+-----------------+
 """
 
-import time
-import RPi.GPIO as GPIO
+from RPi import GPIO
+import signal
 
-#define tilt_pin
-tilt_pin = 15
+#set TOUCH pin 11 (declaration of variables).
+TOUCH = 11
 
-#set GPIO mode to GPIO.BOARD
-GPIO.setmode(GPIO.BOARD)
+#create function setup_gpio
+def setup_gpio():
+    GPIO.setmode(GPIO.BOARD) #use GPIO pins like in the GPIO board schemata
+    GPIO.setup(TOUCH, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-# set pin as INPUT
-GPIO.setup(tilt_pin, GPIO.IN)
+def do_smt(channel):
+    print("Touch detected")
 
-try:
-    while True:
-        #positive is tilt to the left / negative is tilt to the right
-        if GPIO.input(tilt_pin):
-            print ("[-] Left Tilt")
-        else:
-            print ("[-] Right Tilt")
-        time.sleep(1)
-except KeyboardInterrupt:
-    #CTRL+C exists program
-    GPIO.cleanup()
+def main():
+    setup_gpio()
+    try:
+        GPIO.add_event_detect(TOUCH, GPIO.FALLING, callback=do_smt, bouncetime=200)
+        signal.pause()
+    except KeyboardInterrupt:
+        pass
+    finally:
+        GPIO.cleanup()
+
+if __name__ == '__main__':
+    main()
