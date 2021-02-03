@@ -166,12 +166,13 @@ class Tic_Tac_Toe:
                 self.board_draw_counter = 0
 
         with canvas(device) as draw:
+            color_board = 255
             # Draw board with interval so it will be darker
             if self.board_draw_status:
-                draw.rectangle((2,0,2,7), fill=1)
-                draw.rectangle((5,0,5,7), fill=1)
-                draw.rectangle((0,2,7,2), fill=1)
-                draw.rectangle((0,5,7,5), fill=1)
+                draw.rectangle((2,0,2,7), fill=255)
+                draw.rectangle((5,0,5,7), fill=255)
+                draw.rectangle((0,2,7,2), fill=255)
+                draw.rectangle((0,5,7,5), fill=255)
 
             # Draw pieces on the board
             for x in range(3):
