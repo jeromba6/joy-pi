@@ -31,6 +31,7 @@ def back_and_forth( value, positions ):
 
 #loop which permanently updates the time and shows on the display
 try:
+    nr_of_segments = 4
     while True:
         now = datetime.datetime.now()
         hour = now.hour
@@ -39,6 +40,7 @@ try:
         segment.clear()
 
         # display for the hours
+        print(nr_of_segments)
         segment.set_digit(0, int(hour / 10),   0 == back_and_forth(second, nr_of_segments ))
         segment.set_digit(1, hour % 10,        1 == back_and_forth(second, nr_of_segments ))
         # display for the minutes
