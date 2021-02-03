@@ -9,10 +9,8 @@ Position of switches:
 |on |        |        |
 |off|        |        |
 +---+-----------------+
-
-Positive values rotate counterclockwise
-Negative values rotate clockwise
 """
+
 import re
 import time
 from luma.led_matrix.device import max7219
