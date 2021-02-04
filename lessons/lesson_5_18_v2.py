@@ -55,11 +55,17 @@ def main():
 
     #initialisation of button matrix
     buttons = ButtonMatrix([22,37,35,33],[13,15,29,31])
+    buttons2 = ButtonMatrix([37,35],[15,29])
     try:
         while(True):
             if buttons.getButtonsState():
                 print('Changed buttons: {}'.format(buttons.changed()))
                 print('Buttons status: {}'.format(buttons.show()))
+                print()
+           if buttons2.getButtonsState():
+                print('Changed buttons2: {}'.format(buttons2.changed()))
+                print('Buttons2 status: {}'.format(buttons2.show()))
+                print()
 
     except KeyboardInterrupt:
         GPIO.cleanup()
