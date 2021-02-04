@@ -37,12 +37,12 @@ class ButtonMatrix():
             GPIO.setup(self.rowPins[row], GPIO.IN, pull_up_down = GPIO.PUD_UP)
         for col in range(len(self.columnPins)):
             GPIO.setup(self.columnPins[col], GPIO.OUT)
-            GPIO.output(self.columnPins[col], 1)
-        for col in range(len(self.columnPins)):
             GPIO.output(self.columnPins[col], 0)
+        for col in range(len(self.columnPins)):
+            GPIO.output(self.columnPins[col], 1)
             for row in range(len(self.rowPins)):
                 state[col + row * len( self.columnPins ) + 1] = GPIO.input(self.rowPins[row])
-            GPIO.output(self.columnPins[col], 1)
+            GPIO.output(self.columnPins[col], 0)
         return state
 
     def getButtonsState(self):
