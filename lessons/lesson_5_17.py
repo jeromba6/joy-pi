@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Control 7 segement display
+Detect tilt left right
 
 Position of switches:
 +---+--------+--------+
